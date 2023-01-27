@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h4> 注册页 </h4>
+{{ if .has_info }}
+    <text> {{ .info }} </text>
+{{ end }}
+<form name="注册" action="/register" method="post">
+    user_name: <input type="text" name="username">
+    passwd: <input type="password" name="passwd">
+    passwd_again: <input type="password" name="passwd_again">
+    <button>submmit</button>
+</form>
+</body>
+</html>

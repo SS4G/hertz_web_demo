@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    {{ if .is_loged }}
+    <div class="login_user">
+        <td>
+            <text> 欢迎你 用户 {{ .user_name }} </text>
+        </td>
+        <td>
+            <a href="/quit_login"> 退出登录</a><br>
+        </td>
+    </div>
+    <div block="doc_list">
+        <a href="/docs"> 进入论坛</a><br>
+    </div>
+    {{ else }}
+    <div class="login_box">
+        <text>Hertz Demo 图片网 请登录</text>
+        <form name="login" action="/login" method="post">
+            用户名: <input type="text" name="username"><br>
+            密码: <input type="password" name="passwd"><br>
+            <button type="login" value="Submit">登录</button>
+            <text><a href="/register">没有账号 点此注册</a></text>
+        </form>
+    </div>
+    {{ end }}
+</body>
+</html>

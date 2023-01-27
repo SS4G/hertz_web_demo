@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="login_user">
+        <td>
+            <text> 欢迎你 用户 {{ .user_name }} </text>
+        </td>
+        <td>
+            <a href="/quit_login"> 退出登录</a><br>
+        </td>
+    </div>
+    <div class="user_profile">
+        {{ if .notfound }}
+        <text> user_not found </text>
+        {{ else }}
+        <div class="user">
+            <div class="user_info">
+                <text> user_id: {{ .user_id }} </text>
+                <text> user_name: {{ .user_name }} </text>
+            </div>
+            <div class="user_avtar">
+                <img src="{{ .avetar_image_url }}" alt="imgs" width="30" height="30">
+            </div>
+        </div>
+        <div class="return">
+            <div class="index">
+                <td><a href="/user/{{ .user_id }}"> 我的主页 </a></td>>
+            </div>
+            <div class="index">
+                <a href="/index"> 返回首页 </a><br>
+            </div>
+            <div class="index">
+                <a href="/docs"> 返回文章列表 </a><br>
+            </div>
+            <div class="index">
+                <a href="/postdoc">发布文章</a><br>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+go build -o hertz_demo_exe && ./hertz_demo_exe #--init_db --gen_random_data

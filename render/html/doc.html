@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="login_user">
+        <td>
+            <text> 欢迎你 用户 {{ .user_name }} </text>
+        </td>
+        <td>
+            <a href="/quit_login"> 退出登录</a><br>
+        </td>
+    </div>
+    <div class="doc">
+        <div class="doc_title">
+            <text>
+                {{ .doc_title }}
+            </text>
+        </div>
+        <div class="doc_text">
+            <text> {{ .doc_text }} </text>
+        </div>
+        <div class="doc_image">
+            <text> {{ .doc_text }} </text>
+            <img src="{{ .image_url }}">
+        </div>
+    </div>
+    <div class="return">
+        <div class="index">
+            <td><a href="/user/{{ .user_id }}"> 我的主页 </a></td>>
+        </div>
+        <div class="index">
+            <a href="/index"> 返回首页 </a><br>
+        </div>
+        <div class="index">
+            <a href="/docs"> 返回文章列表 </a><br>
+        </div>
+        <div class="index">
+            <a href="/postdoc">发布文章</a><br>
+        </div>
+    </div>
+</body>
+</html>
