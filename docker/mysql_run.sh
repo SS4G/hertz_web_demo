@@ -1,4 +1,4 @@
-#host_data_path="/Users/bytedance/Desktop/go_proj/website1/hertz_demo/hertz_mysql_data"
+#host_data_path="/Users/xxxx/Desktop/go_proj/website1/hertz_demo/hertz_mysql_data"
 #container_name="mysql_hertz"
 #password="123456"
 #docker run --name ${container_name} -e MYSQL_ROOT_PASSWORD=${password} -p 12001:3306 -v ${host_data_path}:/var/lib/mysql -d mysql:latest
