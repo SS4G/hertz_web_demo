@@ -105,6 +105,7 @@ func RegisterPost(ctx context.Context, c *app.RequestContext) {
 	username := string(c.PostForm("username"))
 	passwd := string(c.PostForm("passwd"))
 	passwd_again := string(c.PostForm("passwd_again"))
+	avatar_img_url := string(c.PostForm("avatar_img"))
 
 	if passwd != passwd_again { // 密码不一致
 		c.Redirect(consts.StatusFound, []byte(fmt.Sprintf("/register?info=%s", "两次密码不一致")))
@@ -119,7 +120,7 @@ func RegisterPost(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 
-	user := model.User{UserName: username, Password: passwd}
+	user := model.User{UserName: username, Password: passwd, AvatarImageUrl: avatar_img_url}
 	// 插入校验
 	inserResult := db.Create(&user)
 	if errors.Is(inserResult.Error, grom.ErrInvalidDB) {
@@ -261,7 +262,7 @@ func UserProfile(ctx context.Context, c *app.RequestContext) {
 				"user_id":          user.ID,
 				"user_name":        user.UserName,
 				"user_reg_time":    user.CreatedAt.String(),
-				"avetar_image_url": "https://img-blog.csdnimg.cn/img_convert/5bd0b8e7f91ffea81dbbb30a6080199d.png",
+				"avetar_image_url": user.AvatarImageUrl,
 			}
 			c.HTML(consts.StatusOK, "new_user_profile.html", resultMap)
 		}

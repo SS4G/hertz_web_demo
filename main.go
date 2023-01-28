@@ -5,6 +5,7 @@ import (
 	"flag"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
+	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"strings"
@@ -87,10 +88,13 @@ func mysql_init(generateRandomData bool) {
 		panic("init doc failed")
 	}
 
+	model.GenTestUsers()
 	if generateRandomData {
-		for i := 0; i < 5; i++ {
-			db.Create(model.NewRandomUser())
-			db.Create(model.NewRandomDoc())
+		for i := 0; i < 4; i++ {
+			db.Create(model.TestUsers[i])
+			log.Infof("user[%d] created", i)
+			db.Create(model.TestDocs[i])
+			log.Infof("doc[%d] created", i)
 		}
 	}
 }
